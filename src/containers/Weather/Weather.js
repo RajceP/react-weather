@@ -30,6 +30,7 @@ const Weather = () => {
             .get('location/' + response.data[0].woeid)
             .then(response => {
               setWeather(response.data);
+              console.log(response.data);
               setLoading(false);
             })
             .catch(error => {

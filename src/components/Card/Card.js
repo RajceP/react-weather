@@ -19,7 +19,7 @@ const WeatherCard = styled.div`
   }
 `;
 
-const Content = styled.div`
+const CardContent = styled.div`
   display: inline;
 
   @media (min-width: 1440px) {
@@ -40,25 +40,33 @@ const Icon = styled.img`
   }
 
   @media (max-width: 699px) {
+    margin: -40px 20%;
     height: 100px;
   }
 
   @media (max-width: 499px) {
+    margin: -40px 20%;
+    height: 50px;
+  }
+
+  @media (max-width: 299px) {
     display: none;
   }
 `;
 
 const Card = props => {
-  const getDate = date => {
+  const getDay = date => {
     const days = ['Neděle', 'Pondělí', 'Úterý', 'Středa', 'Čtvrtek', 'Pátek', 'Sobota'];
     const d = new Date(date);
-    return days[d.getDay()];
+    const split = date.split('-');
+    const transformedDate = split[2] + '.' + split[1];
+    return days[d.getDay()] + ' - ' + transformedDate;
   };
 
   return (
     <WeatherCard>
-      <Content>
-        <h3>{getDate(props.weather.applicable_date)}</h3>
+      <CardContent>
+        <h3>{getDay(props.weather.applicable_date)}</h3>
         <Icon
           src={
             'https://www.metaweather.com/static/img/weather/' +
@@ -75,7 +83,7 @@ const Card = props => {
         <p>Vlhkost: {props.weather.humidity} %</p>
         <p>Viditelnost: {(props.weather.visibility * 1.609344).toFixed(2)} km</p>
         <p>Předvídatelnost: {props.weather.predictability} %</p>
-      </Content>
+      </CardContent>
     </WeatherCard>
   );
 };
