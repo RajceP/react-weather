@@ -5,7 +5,7 @@ import axios from '../../axios-weather';
 import Card from '../../components/Card/Card';
 import Aux from '../../hoc/Auxiliary';
 
-import Loader from '../../UI/Loader/Loader'
+import Loader from '../../UI/Loader/Loader';
 
 const Weather = () => {
   const [weather, setWeather] = useState(null);
@@ -30,7 +30,6 @@ const Weather = () => {
             .get('location/' + response.data[0].woeid)
             .then(response => {
               setWeather(response.data);
-              console.log(response.data);
               setLoading(false);
             })
             .catch(error => {
