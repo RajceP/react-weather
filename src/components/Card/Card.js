@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from 'react';
 
 import styled from 'styled-components';
@@ -82,10 +83,14 @@ const Card = props => {
         <p>Tlak vzduchu: {props.weather.air_pressure} hPa</p>
         <p>Vlhkost: {props.weather.humidity} %</p>
         <p>Viditelnost: {(props.weather.visibility * 1.609344).toFixed(2)} km</p>
-        <p>Předvídatelnost: {props.weather.predictability} %</p>
+        <p>Pravděpodobnost: {props.weather.predictability} %</p>
       </CardContent>
     </WeatherCard>
   );
 };
+
+Card.propTypes = {
+  weather: PropTypes.any
+}
 
 export default Card;
