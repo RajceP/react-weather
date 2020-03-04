@@ -3,7 +3,6 @@
     "*.js": "javascriptreact"
   },
   "workbench.colorCustomizations": {
-    "titleBar.activeBackground": "#640054"
-  },
-  "editor.tabSize": 2
+    "titleBar.activeBackground": "#d9ff00"
+  }
 }
