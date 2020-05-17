@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
 import React from 'react';
 
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const WeatherCard = styled.div`
@@ -55,42 +55,49 @@ const Icon = styled.img`
   }
 `;
 
-const Card = props => {
-  const getDay = date => {
+const Card = ({ weather }) => {
+  const getDay = (date) => {
     const days = ['Neděle', 'Pondělí', 'Úterý', 'Středa', 'Čtvrtek', 'Pátek', 'Sobota'];
     const d = new Date(date);
     const split = date.split('-');
-    const transformedDate = split[2] + '.' + split[1];
-    return days[d.getDay()] + ' - ' + transformedDate;
+    const transformedDate = `${split[2]}.${split[1]}`;
+    return `${days[d.getDay()]} - ${transformedDate}`;
   };
 
   return (
     <WeatherCard>
       <CardContent>
-        <h3>{getDay(props.weather.applicable_date)}</h3>
+        <h3>{getDay(weather.applicable_date)}</h3>
         <Icon
-          src={
-            'https://www.metaweather.com/static/img/weather/' +
-            props.weather.weather_state_abbr +
-            '.svg'
-          }
-          alt={props.weather.weather_state_abbr}
+          src={`https://www.metaweather.com/static/img/weather/${weather.weather_state_abbr}.svg`}
+          alt={weather.weather_state_abbr}
         />
-        <p>Min: {props.weather.min_temp.toFixed(2)} °C</p>
-        <p>Max: {props.weather.max_temp.toFixed(2)} °C</p>
-        <p>Rychlost větru: {(props.weather.wind_speed * 0.44704).toFixed(2)} m/s</p>
-        <p>Směr větru: {props.weather.wind_direction.toFixed(2)}°</p>
-        <p>Tlak vzduchu: {props.weather.air_pressure} hPa</p>
-        <p>Vlhkost: {props.weather.humidity} %</p>
-        <p>Viditelnost: {(props.weather.visibility * 1.609344).toFixed(2)} km</p>
-        <p>Pravděpodobnost: {props.weather.predictability} %</p>
+        <p>Min: {weather.min_temp.toFixed(2)} °C</p>
+        <p>Max: {weather.max_temp.toFixed(2)} °C</p>
+        <p>Rychlost větru: {(weather.wind_speed * 0.44704).toFixed(2)} m/s</p>
+        <p>Směr větru: {weather.wind_direction.toFixed(2)}°</p>
+        <p>Tlak vzduchu: {weather.air_pressure} hPa</p>
+        <p>Vlhkost: {weather.humidity} %</p>
+        <p>Viditelnost: {(weather.visibility * 1.609344).toFixed(2)} km</p>
+        <p>Pravděpodobnost: {weather.predictability} %</p>
       </CardContent>
     </WeatherCard>
   );
 };
 
 Card.propTypes = {
-  weather: PropTypes.any
-}
+  weather: PropTypes.shape({
+    air_pressure: PropTypes.number,
+    applicable_date: PropTypes.string,
+    humidity: PropTypes.number,
+    max_temp: PropTypes.number,
+    min_temp: PropTypes.number,
+    predictability: PropTypes.number,
+    visibility: PropTypes.number,
+    weather_state_abbr: PropTypes.string,
+    wind_direction: PropTypes.number,
+    wind_speed: PropTypes.number,
+  }).isRequired,
+};
 
 export default Card;

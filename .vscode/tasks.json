@@ -1,25 +1,153 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "type": "npm",
-            "script": "start",
-            "group": {
-                "kind": "test",
-                "isDefault": true
-            },
-            "isBackground": true,
-            "problemMatcher": {
-                "owner": "custom",
-                "pattern": {
-                    "regexp": "ˆ$"
-                },
-                "background": {
-                    "activeOnStart": true,
-                    "beginsPattern": "Compiling...",
-                    "endsPattern": "Compiled .*"
-                }
-            }
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "start",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "custom",
+        "pattern": {
+          "regexp": "ˆ$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Compiling...",
+          "endsPattern": "Compiled .*"
         }
-    ]
+      }
+    },
+    {
+      "label": "npm stop",
+      "type": "shell",
+      "command": "echo '${command:workbench.action.tasks.terminate}'",
+      "presentation": {
+        "echo": true,
+        "reveal": "never",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      }
+    },
+    {
+      "label": "Open in Firefox",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "command": "Firefox",
+      "linux": {
+        "command": "/mnt/c/Program Files/Firefox Developer Edition/firefox.exe"
+      },
+      "windows": {
+        "command": "C:/Program Files/Firefox Developer Edition/firefox.exe"
+      },
+      "args": ["http://localhost:3000"],
+      "presentation": {
+        "echo": true,
+        "reveal": "never",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      }
+    },
+    {
+      "label": "Open in Opera",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "command": "Opera",
+      "linux": {
+        "command": "/mnt/c/Users/petrr/AppData/Local/Programs/Opera developer/launcher.exe"
+      },
+      "windows": {
+        "command": "C:/Users/petrr/AppData/Local/Programs/Opera developer/launcher.exe"
+      },
+      "args": ["http://localhost:3000"],
+      "presentation": {
+        "echo": true,
+        "reveal": "never",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      }
+    },
+    {
+      "label": "Open in Brave",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "command": "Brave",
+      "linux": {
+        "command": "/mnt/c/Program Files (x86)/BraveSoftware/Brave-Browser-Nightly/Application/brave.exe"
+      },
+      "windows": {
+        "command": "C:/Program Files (x86)/BraveSoftware/Brave-Browser-Nightly/Application/brave.exe"
+      },
+      "args": ["http://localhost:3000"],
+      "presentation": {
+        "echo": true,
+        "reveal": "never",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      }
+    },
+    {
+      "label": "Open in Edge",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "command": "Edge",
+      "linux": {
+        "command": "/mnt/c/Users/petrr/AppData/Local/Microsoft/Edge SxS/Application/msedge.exe"
+      },
+      "windows": {
+        "command": "C:/Users/petrr/AppData/Local/Microsoft/Edge SxS/Application/msedge.exe"
+      },
+      "args": ["http://localhost:3000"],
+      "presentation": {
+        "echo": true,
+        "reveal": "never",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      }
+    },
+    {
+      "label": "Open in IE",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "command": "IE",
+      "linux": {
+        "command": "/mnt/c/Program Files/Internet Explorer/iexplore.exe"
+      },
+      "windows": {
+        "command": "C:/Program Files/Internet Explorer/iexplore.exe"
+      },
+      "args": ["http://localhost:3000"],
+      "presentation": {
+        "echo": true,
+        "reveal": "never",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      }
+    }
+  ]
 }

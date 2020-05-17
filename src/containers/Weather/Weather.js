@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { usePosition } from '../../Position';
-import axios from '../../axios-weather';
+import React, { useEffect, useState } from 'react';
 
+import axios from '../../api/axios-weather';
 import Card from '../../components/Card/Card';
-import Aux from '../../hoc/Auxiliary';
-
-import Loader from '../../UI/Loader/Loader';
+import Loader from '../../components/UI/Loader/Loader';
+import { usePosition } from '../../hooks/Position';
 
 const Weather = () => {
   const [weather, setWeather] = useState(null);
@@ -19,24 +17,24 @@ const Weather = () => {
   });
 
   const loadData = () => {
-    let lat = latitude;
-    let lon = longitude;
+    const lat = latitude;
+    const lon = longitude;
 
     if (lat && lon && !weather) {
       axios
-        .get('location/search/?lattlong=' + lat + ',' + lon)
-        .then(response => {
+        .get(`location/search/?lattlong=${lat},${lon}`)
+        .then((response) => {
           axios
-            .get('location/' + response.data[0].woeid)
-            .then(response => {
-              setWeather(response.data);
+            .get(`location/${response.data[0].woeid}`)
+            .then((locResponse) => {
+              setWeather(locResponse.data);
               setLoading(false);
             })
-            .catch(error => {
+            .catch((_locEError) => {
               setError(true);
             });
         })
-        .catch(error => {
+        .catch((_error) => {
           setError(true);
         });
     }
@@ -51,16 +49,16 @@ const Weather = () => {
 
   if (weather && !loading) {
     title = weather.title;
-    cards = weather.consolidated_weather.map(weather => {
-      return <Card key={weather.id} weather={weather}></Card>;
+    cards = weather.consolidated_weather.map((weatherItem) => {
+      return <Card key={weatherItem.id} weather={weatherItem} />;
     });
   }
 
   return (
-    <Aux>
+    <>
       <h1>{title}</h1>
       <div>{cards}</div>
-    </Aux>
+    </>
   );
 };
 

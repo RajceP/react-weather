@@ -5,13 +5,19 @@
       "name": "Chrome",
       "type": "chrome",
       "preLaunchTask": "npm: start",
-      "env": {"browser": "none"},
+      "postDebugTask": "npm stop",
       "request": "launch",
+      "runtimeExecutable": "C:/Users/petrr/AppData/Local/Google/Chrome SxS/Application/chrome.exe",
+      "userDataDir": true,
       "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}/src",
       "sourceMapPathOverrides": {
-        "webpack:///src/*": "${webRoot}/*"
+        "/*": "/__vscode-remote-uri__/*"
       }
+      // For Windows use:
+      // "sourceMapPathOverrides": {
+      //   "webpack:///src/*": "${webRoot}/*"
+      // }
     }
   ]
 }

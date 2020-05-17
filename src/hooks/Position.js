@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const defaultSettings = {
   enableHighAccuracy: false,
@@ -19,7 +19,7 @@ export const usePosition = (watch = false, settings = defaultSettings) => {
     });
   };
 
-  const onError = error => {
+  const onError = (error) => {
     setError(error.message);
   };
 
