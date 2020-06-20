@@ -40,8 +40,11 @@ const StyledLoader = styled.div`
     -webkit-animation-delay: -0.32s;
     animation-delay: -0.32s;
   }
+
   :after {
     left: 1.5em;
+    -webkit-animation-delay: 0.16s;
+    animation-delay: 0.16s;
   }
 
   @-webkit-keyframes load1 {

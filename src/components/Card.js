@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react';
 
 import PropTypes from 'prop-types';
@@ -55,7 +56,20 @@ const Icon = styled.img`
   }
 `;
 
-const Card = ({ weather }) => {
+const Card = ({
+  weather: {
+    applicable_date,
+    weather_state_abbr,
+    min_temp,
+    max_temp,
+    wind_speed,
+    wind_direction,
+    air_pressure,
+    humidity,
+    visibility,
+    predictability,
+  },
+}) => {
   const getDay = (date) => {
     const days = ['Neděle', 'Pondělí', 'Úterý', 'Středa', 'Čtvrtek', 'Pátek', 'Sobota'];
     const d = new Date(date);
@@ -67,19 +81,19 @@ const Card = ({ weather }) => {
   return (
     <WeatherCard>
       <CardContent>
-        <h3>{getDay(weather.applicable_date)}</h3>
+        <h3>{getDay(applicable_date)}.</h3>
         <Icon
-          src={`https://www.metaweather.com/static/img/weather/${weather.weather_state_abbr}.svg`}
-          alt={weather.weather_state_abbr}
+          src={`https://www.metaweather.com/static/img/weather/${weather_state_abbr}.svg`}
+          alt={weather_state_abbr}
         />
-        <p>Min: {weather.min_temp.toFixed(2)} °C</p>
-        <p>Max: {weather.max_temp.toFixed(2)} °C</p>
-        <p>Rychlost větru: {(weather.wind_speed * 0.44704).toFixed(2)} m/s</p>
-        <p>Směr větru: {weather.wind_direction.toFixed(2)}°</p>
-        <p>Tlak vzduchu: {weather.air_pressure} hPa</p>
-        <p>Vlhkost: {weather.humidity} %</p>
-        <p>Viditelnost: {(weather.visibility * 1.609344).toFixed(2)} km</p>
-        <p>Pravděpodobnost: {weather.predictability} %</p>
+        <p>Min: {min_temp.toFixed(2)} °C</p>
+        <p>Max: {max_temp.toFixed(2)} °C</p>
+        <p>Rychlost větru: {(wind_speed * 0.44704).toFixed(2)} m/s</p>
+        <p>Směr větru: {wind_direction.toFixed(2)}°</p>
+        <p>Tlak vzduchu: {air_pressure} hPa</p>
+        <p>Vlhkost: {humidity} %</p>
+        <p>Viditelnost: {(visibility * 1.609344).toFixed(2)} km</p>
+        <p>Pravděpodobnost: {predictability} %</p>
       </CardContent>
     </WeatherCard>
   );

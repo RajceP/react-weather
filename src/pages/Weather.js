@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
-import axios from '../../api/axios-weather';
-import Card from '../../components/Card/Card';
-import Loader from '../../components/UI/Loader/Loader';
-import { usePosition } from '../../hooks/Position';
+import axios from '../api/axios-weather';
+import Card from '../components/Card';
+import Loader from '../components/UI/Loader';
+import { usePosition } from '../utils/hooks/Position';
 
 const Weather = () => {
   const [weather, setWeather] = useState(null);

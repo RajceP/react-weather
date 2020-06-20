@@ -1,9 +1,15 @@
 import React from 'react';
 
-import Weather from './containers/Weather/Weather';
+import Weather from './pages/Weather';
+import GlobalStyle from './utils/styles/Global';
 
 function App() {
-  return <Weather />;
+  return (
+    <>
+      <GlobalStyle />
+      <Weather />
+    </>
+  );
 }
 
 export default App;
