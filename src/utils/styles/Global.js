@@ -10,8 +10,9 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     font-family: 'Noto Sans', sans-serif;
     text-align: center;
-    background: rgb(18,18,18);
-    background: radial-gradient(circle, rgba(18,18,18,1) 0%, rgba(36,36,36,1) 75%);
+    background-image: url('https://source.unsplash.com/1920x1080/?nature,dark');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: white;
   }
 `;

@@ -8,11 +8,12 @@ const WeatherCard = styled.div`
   width: 60%;
   margin: 16px auto;
   padding: 0px 16px;
-  border: 1px solid #eee;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.57);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
   text-align: left;
   border-radius: 15px;
-  background-color: #363636;
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.5);
 
   @media (min-width: 1440px) {
     display: inline-block;

@@ -19,8 +19,8 @@ export const usePosition = (watch = false, settings = defaultSettings) => {
     });
   };
 
-  const onError = (error) => {
-    setError(error.message);
+  const onError = (err) => {
+    setError(err.message);
   };
 
   useEffect(() => {
