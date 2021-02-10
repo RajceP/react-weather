@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-
 import axios from '../api/axios-weather';
 import Card from '../components/Card';
 import Loader from '../components/UI/Loader';
@@ -49,9 +48,9 @@ const Weather = () => {
 
   if (weather && !loading) {
     title = weather.title;
-    cards = weather.consolidated_weather.map((weatherItem) => {
-      return <Card key={weatherItem.id} weather={weatherItem} />;
-    });
+    cards = weather.consolidated_weather.map((weatherItem) => (
+      <Card key={weatherItem.id} weather={weatherItem} />
+    ));
   }
 
   return (
